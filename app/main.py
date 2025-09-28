@@ -161,4 +161,7 @@ if __name__ == '__main__':
     print("📊 Loading model and data...")
     predictor.load_data_and_train_model()
     print("🌐 Starting Flask server...")
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    
+    # Get port from environment variable for Railway deployment
+    port = int(os.environ.get('PORT', 5000))
+    app.run(debug=False, host='0.0.0.0', port=port)

@@ -1,0 +1,9 @@
+[build]
+builder = "NIXPACKS"
+
+[deploy]
+startCommand = "cd app && gunicorn --bind 0.0.0.0:$PORT main:app"
+restartPolicyType = "ON_FAILURE"
+
+[env]
+PYTHONPATH = "/app"
