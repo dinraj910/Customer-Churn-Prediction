@@ -10,6 +10,8 @@
 
 **🏆 80.55% Accuracy | 🧠 4 ML Models | 🌐 Full-Stack Web App | 📊 Professional Analytics**
 
+🌐 **[🚀 Live Demo - Try it Now!](https://web-production-9b188.up.railway.app/)** 🌐
+
 [🔥 Live Demo](#-live-demo) • [📊 Model Performance](#-model-performance-comparison) • [🖥️ Web Interface](#-web-application-showcase) • [🚀 Quick Start](#-quick-start)
 
 </div>
@@ -103,6 +105,31 @@ This project demonstrates a **complete end-to-end machine learning solution** fo
 </td>
 </tr>
 </table>
+
+---
+
+## 🚀 Live Demo
+
+### 🌐 **Try the Live Application**
+
+**🔗 [Customer Churn Prediction - Live Demo](https://web-production-9b188.up.railway.app/)**
+
+Experience the full power of our ML system:
+- 🏠 **Home Page**: Overview of model performance and features
+- 🔮 **Prediction Tool**: Input customer data and get real-time churn predictions
+- 📊 **Analytics Dashboard**: Compare models and view detailed performance metrics
+
+> **📱 Mobile Optimized**: Works perfectly on all devices - desktop, tablet, and mobile!
+
+### 🎯 **Quick Test Cases**
+
+Try these sample inputs to see the model in action:
+
+**High Risk Customer:**
+- Gender: Male, Senior Citizen: Yes, Monthly Charges: $85, Contract: Month-to-month
+
+**Low Risk Customer:**
+- Gender: Female, Senior Citizen: No, Monthly Charges: $25, Contract: Two year
 
 ---
 
