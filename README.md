@@ -10,7 +10,7 @@
 
 **🏆 80.55% Accuracy | 🧠 4 ML Models | 🌐 Full-Stack Web App | 📊 Professional Analytics**
 
-[🔥 Live Demo]([#-live-demo](https://web-production-9b188.up.railway.app/)) • [📊 Model Performance](#-model-performance-comparison) • [🖥️ Web Interface](#-web-application-showcase) • [🚀 Quick Start](#-quick-start)
+[🔥 Live Demo]([(https://web-production-9b188.up.railway.app/)]) • [📊 Model Performance](#-model-performance-comparison) • [🖥️ Web Interface](#-web-application-showcase) • [🚀 Quick Start](#-quick-start)
 
 </div>
 
