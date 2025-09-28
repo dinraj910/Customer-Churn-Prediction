@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Churn Prediction - AI Project</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-chart-line"></i>
+                <span>Churn Predictor</span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="/" class="nav-link active">
+                        <i class="fas fa-home"></i> Home
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/predict" class="nav-link">
+                        <i class="fas fa-brain"></i> Predict
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/dashboard" class="nav-link">
+                        <i class="fas fa-chart-bar"></i> Dashboard
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">
+                    🤖 Customer Churn Prediction
+                    <span class="gradient-text">AI System</span>
+                </h1>
+                <p class="hero-description">
+                    Predict customer churn with 80.55% accuracy using advanced machine learning. 
+                    Built with Gradient Boosting, Neural Networks, and comprehensive feature engineering.
+                </p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <div class="stat-number">80.55%</div>
+                        <div class="stat-label">Accuracy</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">7,043</div>
+                        <div class="stat-label">Customers</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">4</div>
+                        <div class="stat-label">ML Models</div>
+                    </div>
+                </div>
+                <div class="hero-buttons">
+                    <a href="/predict" class="btn btn-primary">
+                        <i class="fas fa-rocket"></i> Try Prediction
+                    </a>
+                    <a href="/dashboard" class="btn btn-secondary">
+                        <i class="fas fa-chart-line"></i> View Dashboard
+                    </a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="model-showcase">
+                    <div class="model-card winner">
+                        <div class="model-icon">🏆</div>
+                        <h3>Gradient Boosting</h3>
+                        <div class="accuracy">80.55%</div>
+                        <div class="badge">Winner</div>
+                    </div>
+                    <div class="model-card">
+                        <div class="model-icon">🌳</div>
+                        <h3>Random Forest</h3>
+                        <div class="accuracy">78.28%</div>
+                    </div>
+                    <div class="model-card">
+                        <div class="model-icon">🧠</div>
+                        <h3>Neural Network</h3>
+                        <div class="accuracy">74.66%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">🚀 Project Highlights</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Advanced ML Models</h3>
+                    <p>Implemented Neural Networks, Random Forest, Gradient Boosting, and Logistic Regression with comprehensive comparison.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3>Feature Engineering</h3>
+                    <p>Enhanced dataset with polynomial features, interaction terms, and advanced preprocessing techniques.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Robust Training</h3>
+                    <p>Applied regularization, dropout, batch normalization, early stopping, and class balancing for optimal performance.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <h3>Comprehensive Analysis</h3>
+                    <p>Detailed EDA, correlation analysis, feature importance, and model interpretation for business insights.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Details Section -->
+    <section class="technical-details">
+        <div class="container">
+            <h2 class="section-title">🔬 Technical Deep Dive</h2>
+            <div class="tech-grid">
+                <div class="tech-card">
+                    <h3>📊 Dataset</h3>
+                    <ul>
+                        <li><strong>Source:</strong> Telco Customer Churn</li>
+                        <li><strong>Size:</strong> 7,043 customers</li>
+                        <li><strong>Features:</strong> 21 original + engineered</li>
+                        <li><strong>Target:</strong> Binary classification (Churn: Yes/No)</li>
+                    </ul>
+                </div>
+                <div class="tech-card">
+                    <h3>🧹 Preprocessing</h3>
+                    <ul>
+                        <li><strong>Encoding:</strong> LabelEncoder for categoricals</li>
+                        <li><strong>Scaling:</strong> StandardScaler normalization</li>
+                        <li><strong>Split:</strong> 80/20 train/test with stratification</li>
+                        <li><strong>Features:</strong> Polynomial & interaction terms</li>
+                    </ul>
+                </div>
+                <div class="tech-card">
+                    <h3>🧠 Neural Network</h3>
+                    <ul>
+                        <li><strong>Architecture:</strong> 512→256→128→64→32→1</li>
+                        <li><strong>Regularization:</strong> L2, Dropout, BatchNorm</li>
+                        <li><strong>Callbacks:</strong> EarlyStopping, ReduceLR</li>
+                        <li><strong>Training:</strong> 200 epochs, class weights</li>
+                    </ul>
+                </div>
+                <div class="tech-card">
+                    <h3>🏆 Best Model</h3>
+                    <ul>
+                        <li><strong>Algorithm:</strong> Gradient Boosting</li>
+                        <li><strong>Accuracy:</strong> 80.55%</li>
+                        <li><strong>Advantage:</strong> Handles tabular data optimally</li>
+                        <li><strong>Interpretable:</strong> Feature importance rankings</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Model Comparison Section -->
+    <section class="model-comparison">
+        <div class="container">
+            <h2 class="section-title">📈 Model Performance Comparison</h2>
+            <div class="comparison-chart">
+                <div class="chart-bar">
+                    <div class="bar-label">Gradient Boosting</div>
+                    <div class="bar-container">
+                        <div class="bar gb-bar" data-accuracy="80.55"></div>
+                        <span class="bar-value">80.55%</span>
+                    </div>
+                    <div class="bar-badge winner-badge">🏆 Winner</div>
+                </div>
+                <div class="chart-bar">
+                    <div class="bar-label">Random Forest</div>
+                    <div class="bar-container">
+                        <div class="bar rf-bar" data-accuracy="78.28"></div>
+                        <span class="bar-value">78.28%</span>
+                    </div>
+                    <div class="bar-badge">🥈 2nd</div>
+                </div>
+                <div class="chart-bar">
+                    <div class="bar-label">Logistic Regression</div>
+                    <div class="bar-container">
+                        <div class="bar lr-bar" data-accuracy="77.79"></div>
+                        <span class="bar-value">77.79%</span>
+                    </div>
+                    <div class="bar-badge">🥉 3rd</div>
+                </div>
+                <div class="chart-bar">
+                    <div class="bar-label">Neural Network</div>
+                    <div class="bar-container">
+                        <div class="bar nn-bar" data-accuracy="74.66"></div>
+                        <span class="bar-value">74.66%</span>
+                    </div>
+                    <div class="bar-badge">4th</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Business Impact Section -->
+    <section class="business-impact">
+        <div class="container">
+            <h2 class="section-title">💼 Business Impact</h2>
+            <div class="impact-grid">
+                <div class="impact-card">
+                    <div class="impact-icon">💰</div>
+                    <h3>Revenue Protection</h3>
+                    <p>Early churn detection enables proactive retention strategies, protecting revenue streams and reducing customer acquisition costs.</p>
+                </div>
+                <div class="impact-card">
+                    <div class="impact-icon">🎯</div>
+                    <h3>Targeted Interventions</h3>
+                    <p>80.55% accuracy allows precise targeting of at-risk customers for personalized retention campaigns and service improvements.</p>
+                </div>
+                <div class="impact-card">
+                    <div class="impact-icon">📊</div>
+                    <h3>Data-Driven Decisions</h3>
+                    <p>Feature importance analysis reveals key churn drivers, enabling strategic business decisions and service optimizations.</p>
+                </div>
+                <div class="impact-card">
+                    <div class="impact-icon">⚡</div>
+                    <h3>Real-time Predictions</h3>
+                    <p>Fast, automated predictions enable immediate action on high-risk customers through integrated business systems.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>🤖 Customer Churn Predictor</h3>
+                    <p>Advanced machine learning system for predicting customer churn with professional-grade accuracy and insights.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/predict">Predict</a></li>
+                        <li><a href="/dashboard">Dashboard</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Technology Stack</h4>
+                    <ul>
+                        <li>Python & Scikit-learn</li>
+                        <li>TensorFlow & Keras</li>
+                        <li>Flask Web Framework</li>
+                        <li>Advanced ML Techniques</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Key Metrics</h4>
+                    <ul>
+                        <li>80.55% Accuracy</li>
+                        <li>4 ML Models Tested</li>
+                        <li>7,043 Customers Analyzed</li>
+                        <li>Professional Grade</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Customer Churn Prediction AI System. Built with advanced machine learning techniques.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Add smooth scrolling and interactions
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate bars on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animationPlayState = 'running';
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all bars
+            document.querySelectorAll('.bar').forEach(bar => {
+                observer.observe(bar);
+            });
+
+            // Add click effects to buttons
+            document.querySelectorAll('.btn').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    let ripple = document.createElement('span');
+                    ripple.classList.add('ripple');
+                    this.appendChild(ripple);
+                    setTimeout(() => {
+                        ripple.remove();
+                    }, 600);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Customer Churn Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-chart-line"></i>
+                <span>Churn Predictor</span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="/" class="nav-link">
+                        <i class="fas fa-home"></i> Home
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/predict" class="nav-link">
+                        <i class="fas fa-brain"></i> Predict
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/dashboard" class="nav-link active">
+                        <i class="fas fa-chart-bar"></i> Dashboard
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Dashboard Header -->
+    <div class="dashboard-header">
+        <div class="container">
+            <h1>📊 Model Performance Dashboard</h1>
+            <p>Comprehensive analysis of our customer churn prediction models</p>
+        </div>
+    </div>
+
+    <!-- Key Metrics Section -->
+    <section class="dashboard-metrics">
+        <div class="container">
+            <div class="metrics-grid">
+                <div class="metric-card winner">
+                    <div class="metric-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <div class="metric-content">
+                        <div class="metric-value">80.55%</div>
+                        <div class="metric-label">Best Accuracy</div>
+                        <div class="metric-subtitle">Gradient Boosting</div>
+                    </div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="metric-content">
+                        <div class="metric-value">7,043</div>
+                        <div class="metric-label">Training Samples</div>
+                        <div class="metric-subtitle">Customer Records</div>
+                    </div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <div class="metric-content">
+                        <div class="metric-value">4</div>
+                        <div class="metric-label">Models Tested</div>
+                        <div class="metric-subtitle">Comprehensive Analysis</div>
+                    </div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="metric-content">
+                        <div class="metric-value">5.89%</div>
+                        <div class="metric-label">Improvement</div>
+                        <div class="metric-subtitle">Over Baseline</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Model Comparison Section -->
+    <section class="dashboard-comparison">
+        <div class="container">
+            <div class="dashboard-grid">
+                <div class="chart-card">
+                    <h3>🏆 Model Accuracy Comparison</h3>
+                    <canvas id="accuracyChart"></canvas>
+                    <div class="chart-legend">
+                        <div class="legend-item">
+                            <span class="legend-color gb"></span>
+                            <span>Gradient Boosting (Winner)</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-color rf"></span>
+                            <span>Random Forest</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-color lr"></span>
+                            <span>Logistic Regression</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-color nn"></span>
+                            <span>Neural Network</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ranking-card">
+                    <h3>📈 Final Rankings</h3>
+                    <div class="ranking-list">
+                        {% for model, data in model_results.items() %}
+                        <div class="ranking-item rank-{{ data.rank }}">
+                            <div class="rank-position">
+                                {% if data.rank == 1 %}🥇{% elif data.rank == 2 %}🥈{% elif data.rank == 3 %}🥉{% else %}{{ data.rank }}{% endif %}
+                            </div>
+                            <div class="rank-info">
+                                <div class="rank-model">{{ model }}</div>
+                                <div class="rank-accuracy">{{ "%.2f"|format(data.accuracy) }}%</div>
+                            </div>
+                            <div class="rank-bar">
+                                <div class="bar-fill" style="width: '{{ ((data.accuracy / 80.55 * 100)|round(1)) }}%'"></div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Analysis Section -->
+    <section class="technical-analysis">
+        <div class="container">
+            <h2>🔬 Technical Analysis</h2>
+            <div class="analysis-grid">
+                <div class="analysis-card">
+                    <h3>💪 Why Gradient Boosting Won</h3>
+                    <ul class="analysis-list">
+                        <li><strong>Tabular Data Advantage:</strong> Optimized for structured datasets</li>
+                        <li><strong>Feature Interactions:</strong> Automatically captures complex relationships</li>
+                        <li><strong>Robust Training:</strong> Less prone to overfitting than deep networks</li>
+                        <li><strong>Efficient Learning:</strong> Sequential error correction methodology</li>
+                        <li><strong>Interpretability:</strong> Provides feature importance rankings</li>
+                    </ul>
+                </div>
+                
+                <div class="analysis-card">
+                    <h3>🧠 Neural Network Challenges</h3>
+                    <ul class="analysis-list">
+                        <li><strong>Dataset Size:</strong> 7K samples insufficient for deep learning</li>
+                        <li><strong>Complexity Mismatch:</strong> Overkill for tabular business data</li>
+                        <li><strong>Feature Type:</strong> Mixed categorical/numerical challenges</li>
+                        <li><strong>Hyperparameter Sensitivity:</strong> Requires extensive tuning</li>
+                        <li><strong>Overfitting Risk:</strong> Despite regularization techniques</li>
+                    </ul>
+                </div>
+
+                <div class="analysis-card">
+                    <h3>🎯 Key Performance Insights</h3>
+                    <ul class="analysis-list">
+                        <li><strong>Tree Models Dominate:</strong> Top 2 positions in rankings</li>
+                        <li><strong>Ensemble Benefits:</strong> Could achieve ~81-82% accuracy</li>
+                        <li><strong>Linear Baseline:</strong> Logistic Regression surprisingly strong</li>
+                        <li><strong>Feature Engineering:</strong> Polynomial features improved results</li>
+                        <li><strong>Production Ready:</strong> 80.55% accuracy exceeds industry standards</li>
+                    </ul>
+                </div>
+
+                <div class="analysis-card">
+                    <h3>💼 Business Recommendations</h3>
+                    <ul class="analysis-list">
+                        <li><strong>Deploy Gradient Boosting:</strong> Best overall performance</li>
+                        <li><strong>Monitor Performance:</strong> Set up regular model retraining</li>
+                        <li><strong>Focus on Features:</strong> Contract type and tenure are key</li>
+                        <li><strong>Retention Strategy:</strong> Target high-risk customers proactively</li>
+                        <li><strong>A/B Testing:</strong> Validate business impact of predictions</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feature Importance Section -->
+    <section class="feature-importance">
+        <div class="container">
+            <h2>🎯 Key Feature Insights</h2>
+            <div class="features-grid">
+                <div class="feature-card high-importance">
+                    <div class="feature-rank">#1</div>
+                    <div class="feature-info">
+                        <h3>Contract Type</h3>
+                        <p>Month-to-month contracts show highest churn risk</p>
+                    </div>
+                    <div class="importance-bar">
+                        <div class="bar-fill" style="width: 100%"></div>
+                    </div>
+                </div>
+                
+                <div class="feature-card high-importance">
+                    <div class="feature-rank">#2</div>
+                    <div class="feature-info">
+                        <h3>Tenure</h3>
+                        <p>Longer customer relationships reduce churn probability</p>
+                    </div>
+                    <div class="importance-bar">
+                        <div class="bar-fill" style="width: 85%"></div>
+                    </div>
+                </div>
+
+                <div class="feature-card medium-importance">
+                    <div class="feature-rank">#3</div>
+                    <div class="feature-info">
+                        <h3>Monthly Charges</h3>
+                        <p>Higher charges correlate with increased churn risk</p>
+                    </div>
+                    <div class="importance-bar">
+                        <div class="bar-fill" style="width: 70%"></div>
+                    </div>
+                </div>
+
+                <div class="feature-card medium-importance">
+                    <div class="feature-rank">#4</div>
+                    <div class="feature-info">
+                        <h3>Internet Service</h3>
+                        <p>Fiber optic customers show different churn patterns</p>
+                    </div>
+                    <div class="importance-bar">
+                        <div class="bar-fill" style="width: 60%"></div>
+                    </div>
+                </div>
+
+                <div class="feature-card low-importance">
+                    <div class="feature-rank">#5</div>
+                    <div class="feature-info">
+                        <h3>Payment Method</h3>
+                        <p>Electronic check users have higher churn rates</p>
+                    </div>
+                    <div class="importance-bar">
+                        <div class="bar-fill" style="width: 45%"></div>
+                    </div>
+                </div>
+
+                <div class="feature-card low-importance">
+                    <div class="feature-rank">#6</div>
+                    <div class="feature-info">
+                        <h3>Total Charges</h3>
+                        <p>Reflects customer lifetime value and loyalty</p>
+                    </div>
+                    <div class="importance-bar">
+                        <div class="bar-fill" style="width: 35%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>📊 Dashboard Insights</h3>
+                    <p>Comprehensive model analysis revealing Gradient Boosting as the optimal solution for customer churn prediction.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Key Metrics</h4>
+                    <ul>
+                        <li>80.55% Peak Accuracy</li>
+                        <li>4 Models Compared</li>
+                        <li>19 Features Analyzed</li>
+                        <li>Professional Grade Results</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Customer Churn Prediction Dashboard. Advanced ML Analytics Platform.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize accuracy comparison chart
+        document.addEventListener('DOMContentLoaded', function() {
+            const ctx = document.getElementById('accuracyChart').getContext('2d');
+            
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Gradient Boosting', 'Random Forest', 'Logistic Regression', 'Neural Network'],
+                    datasets: [{
+                        label: 'Accuracy (%)',
+                        data: [80.55, 78.28, 77.79, 74.66],
+                        backgroundColor: [
+                            '#28a745',  // Green for winner
+                            '#17a2b8',  // Blue
+                            '#ffc107',  // Yellow
+                            '#dc3545'   // Red for lowest
+                        ],
+                        borderColor: [
+                            '#1e7e34',
+                            '#138496',
+                            '#d39e00',
+                            '#c82333'
+                        ],
+                        borderWidth: 2,
+                        borderRadius: 8,
+                        borderSkipped: false
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return context.parsed.y.toFixed(2) + '% accuracy';
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: false,
+                            min: 70,
+                            max: 85,
+                            ticks: {
+                                callback: function(value) {
+                                    return value + '%';
+                                }
+                            },
+                            grid: {
+                                color: 'rgba(0,0,0,0.1)'
+                            }
+                        },
+                        x: {
+                            grid: {
+                                display: false
+                            },
+                            ticks: {
+                                maxRotation: 45,
+                                minRotation: 0
+                            }
+                        }
+                    },
+                    animation: {
+                        duration: 1500,
+                        easing: 'easeOutQuart'
+                    }
+                }
+            });
+
+            // Animate ranking bars
+            setTimeout(() => {
+                document.querySelectorAll('.rank-bar .bar-fill').forEach(bar => {
+                    bar.style.transition = 'width 1.5s ease-out';
+                    bar.style.width = bar.style.width;
+                });
+            }, 500);
+
+            // Animate feature importance bars
+            setTimeout(() => {
+                document.querySelectorAll('.importance-bar .bar-fill').forEach(bar => {
+                    bar.style.transition = 'width 1.2s ease-out';
+                    bar.style.width = bar.style.width;
+                });
+            }, 800);
+        });
+    </script>
+</body>
+</html>
